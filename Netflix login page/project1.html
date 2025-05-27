@@ -1,39 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project 1</title>
-    <link rel="stylesheet" href="Project1.css">
-</head>
-<body>
+    <link rel="stylesheet" href="Project1.css" />
+  </head>
+  <body>
     <div class="box">
-        <div class="upper-box">
-            <div class="image-logo"><img src="Project 1 logo.png" alt="" width="197px" height="65px"></div>
+      <div class="upper-box">
+        <div class="image-logo">
+          <img src="logo.png" alt="" width="197px" height="65px" />
         </div>
-    
-        <main class="login__box">
-    
-            <form action="" class="container">
-                <h1 class="text">Sign In</h1>
-                <input class="email" type="email" name="user-sign-in" placeholder="Email or phone number">
-                <input class="password" type="text" name="user-password" placeholder="Password">
-                <input class="btn"  type="submit" value="Sign in">
-                <div class="sec-box">
-                    <input class="check" type="checkbox" name="" >
-                    <div class="remember">Remember</div>
-                    <div class="Need">Need help?</div>
-                </div>   
-                <div class="third-box">
-                    <h3 class="third__h3">New to Netflix?</h3>
-                    <h2 class="third__h2">Sign up now.</h2>
-                </div>
-                <span class="forth-box">
-                    <p class="forth__p">This page is protecteed by Google reCAPTCHA to ensure you're not a bot. <a class="forth__a" href="#">Learn more.</a></p>  
-                </span>
-            </form>
-    
-        </main>        
+      </div>
+
+      <main class="login__box">
+        <form action="" class="container">
+          <h1 class="text">Sign In</h1>
+          <input
+            class="email"
+            type="email"
+            name="user-sign-in"
+            placeholder="Email or phone number"
+          />
+          <input
+            class="password"
+            type="text"
+            name="user-password"
+            placeholder="Password"
+          />
+          <input class="btn" type="submit" value="Sign in" />
+          <div class="sec-box">
+            <input class="check" type="checkbox" name="" />
+            <div class="remember">Remember</div>
+            <div class="Need">Need help?</div>
+          </div>
+          <div class="third-box">
+            <h3 class="third__h3">New to Netflix?</h3>
+            <h2 class="third__h2">Sign up now.</h2>
+          </div>
+          <span class="forth-box">
+            <p class="forth__p">
+              This page is protecteed by Google reCAPTCHA to ensure you're not a
+              bot. <a class="forth__a" href="#">Learn more.</a>
+            </p>
+          </span>
+        </form>
+      </main>
     </div>
-</body>
+
+    <script>
+      document
+        .querySelector(".container")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent form from submitting
+
+          const emailInput = document.querySelector(".email");
+          const passwordInput = document.querySelector(".password");
+          const email = emailInput.value.trim();
+          const password = passwordInput.value.trim();
+
+          let valid = true;
+
+          // Clear previous error styles
+          emailInput.style.border = "";
+          passwordInput.style.border = "";
+
+          // Email validation
+          const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+          if (email === "" || !emailPattern.test(email)) {
+            alert("Please enter a valid email.");
+            emailInput.style.border = "2px solid red";
+            valid = false;
+          }
+
+          // Password validation
+          if (password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            passwordInput.style.border = "2px solid red";
+            valid = false;
+          }
+
+          // If everything is valid
+          if (valid) {
+            alert("Login successful!");
+            
+          }
+        });
+    </script>
+  </body>
 </html>
